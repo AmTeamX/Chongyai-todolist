@@ -1,0 +1,16 @@
+C4Context
+    title ICT To Do List - System Context
+
+    Person(student, "Student", "Manages personal tasks, views assignments, tracks submission status")
+    Person(instructor, "Instructor", "Views teaching-related tasks and high-level assignment deadlines")
+    Person(admin, "System Administrator", "Manages configuration, supports accounts, monitors sync health")
+
+    System(system, "ICT To Do List", "Task management system that supports manual tasks and MyCourses synchronization")
+
+    System_Ext(mycourses, "MyCourses", "External e-learning system providing course, assignment, and submission data")
+
+    Rel(student, system, "Uses via Web App or Mobile App", "HTTPS / JSON")
+    Rel(instructor, system, "Uses via Web App (admin screen)", "HTTPS / JSON")
+    Rel(admin, system, "Administers via admin interface", "HTTPS / JSON")
+
+    Rel(system, mycourses, "Retrieves courses, assignments, submission status", "HTTPS / JSON")
